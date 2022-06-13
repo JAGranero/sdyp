@@ -26,7 +26,7 @@ void main(int argc, char **argv){
     if(mytid == 0)
         ids = (char *) malloc (sizeof (saludo) * nproc);
     MPI_Barrier(MPI_COMM_WORLD);
-    MPI_Gather(saludo, 4, MPI_CHAR, ids, 4, MPI_CHAR, 0, MPI_COMM_WORLD);
+    MPI_Gather(saludo, 20, MPI_CHAR, ids, 20, MPI_CHAR, 0, MPI_COMM_WORLD);
     
     if(mytid == 0){
         strcat(ids,"\0");
