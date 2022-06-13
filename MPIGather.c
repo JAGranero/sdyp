@@ -16,7 +16,12 @@ void main(int argc, char **argv){
     
     char *ids;
 
-    char saludo[10] = "Hola";
+
+    char saludo[10] = "Soy el proceso";
+    char id [4];
+    sprintf(id, "%d\n", mytid); 
+    strcat(saludo, id);
+
             
     if(mytid == 0)
         ids = (char *) malloc (sizeof (saludo) * nproc);
