@@ -25,7 +25,7 @@ void main(int argc, char **argv){
     
     if(mytid == 0){
         strcat(ids,"\0");
-        printf("Procesos dicen: %s", ids);
+        printf("Procesos dicen: %s\n", ids);
         free (ids);
     }
     MPI_Finalize();
