@@ -30,7 +30,8 @@ void main(int argc, char **argv){
     
     if(mytid == 0){
         strcat(ids,"\0");
-        printf("Procesos dicen: %s\n", ids);
+        int tam = strlen(ids);
+        printf("Procesos dicen: %s - %i\n", ids,tam);
         free (ids);
     }
     MPI_Finalize();
