@@ -29,18 +29,18 @@ void main(int argc, char **argv){
     	for (int i = 1; i < nproc; ++i)//inicia desde 1 ya que no contamos el proceso 0
     	{
     		MPI_Recv(saludo, 50, MPI_CHAR, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+
+            //Se imprime los mensajes recibidos
+            printf("%s",saludo);
+
     		strcat(mensajes,saludo);
     	}
     	strcat(mensajes,"\0");
-    	//Se imprime los mensajes recibidos
-    	printf("%s",mensajes);
-
     	//Se libera memoria
         free (mensajes);
     }
     else{
     	//cast de int a string
-        printf("%s\n", saludo);
 	    sprintf(id, "%d\n", mytid);
 	    //concatenar mensaje e id
 	    strcat(saludo, id);
