@@ -36,7 +36,7 @@ void main(int argc, char **argv){
         printf("Procesos dicen:\n");
         for(int i=0;i < nproc; i++){
             printf("    -%s\n", (ids + tam));
-            tam = tam + strlen(ids + tam);
+            tam = tam + strlen(ids + tam) + 1;
         }
         free (ids);
     }
