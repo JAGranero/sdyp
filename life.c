@@ -3,6 +3,9 @@
 //Dimension de la matriz
 int dim = 0;
 
+char **matriz; 
+char **proxEstado;
+
 //Nuestra la matriz
 int mostrarMatriz(){
 	for (int i = 0; i < dim; ++i)
