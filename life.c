@@ -3,17 +3,153 @@
 //Dimension de la matriz
 int dim = 0;
 
+char **matriz, **proxEstado;
+
 //Nuestra la matriz
 int mostrarMatriz(char **matriz){
 	for (int i = 0; i < dim; ++i)
 	{
 		for (int j = 0; j < dim; ++j)
 		{
-			printf("%c\n", matriz[i][j]);
+			printf("%c", matriz[i][j]);
 		}
 		printf("\n");
 	}
 	return(0);
+}
+
+char evaluacion(char estado, int vecinos){
+	if(estado == '*')
+		if (vecinos==2 || vecinos==3)
+			return('*');
+		else
+			return('-');
+	else
+		if (vecinos == 3)
+			return('*');
+		else
+			return(estado);
+}
+
+void actualizarMatriz(){
+	//Contador de vecinos vivos
+	int contVecinos=0;
+
+	char **aux;
+
+	for (int i = 0; i < dim; ++i)
+	{	
+		for (int j = 0; j < dim; ++j)
+		{
+			switch(i){
+				//Primera fila
+				case 0:
+				switch(j){
+					//Primer columna
+					case 0:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j+1]=='*')
+						contVecinos++;
+					break;
+					//Ultima columna
+					case dim-1:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j-1]=='*')
+						contVecinos++;
+					break;
+					//Columnas internas
+					default:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j+1]=='*')
+						contVecinos++;
+					if (matriz[i][j-1]=='*')
+						contVecinos++;
+				}
+				break;
+				//Ultima fila
+				case (dim-1):
+				switch(j){
+					//Primer columna
+					case 0:
+					//Contar vecinos vivos
+					if (matriz[i-1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j+1]=='*')
+						contVecinos++;
+					break;
+					//Ultima columna
+					case dim-1:
+					//Contar vecinos vivos
+					if (matriz[i-1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j-1]=='*')
+						contVecinos++;
+					break;
+					//Columnas internas
+					default:
+					//Contar vecinos vivos
+					if (matriz[i][j+1]=='*')
+						contVecinos++;
+					if (matriz[i-1][j]=='*')
+						contVecinos++;
+					if (matriz[i][j-1]=='*')
+						contVecinos++;
+				}
+				break;
+				//Filas internas
+				default:
+				switch(j){
+					//Primer columna
+					case 0:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')//abajo
+						contVecinos++;
+					if (matriz[i-1][j]=='*')//arriba
+						contVecinos++;
+					if (matriz[i][j+1]=='*')//derecha
+						contVecinos++;
+					break;
+					//Ultima columna
+					case dim-1:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')// abajo
+						contVecinos++;
+					if (matriz[i-1][j]=='*')//arriba
+						contVecinos++;
+					if (matriz[i][j-1]=='*')//izquierda
+						contVecinos++;
+					break;
+					//Columnas internas
+					default:
+					//Contar vecinos vivos
+					if (matriz[i+1][j]=='*')// abajo
+						contVecinos++;
+					if (matriz[i-1][j]=='*')//arriba
+						contVecinos++;
+					if (matriz[i][j+1]=='*')//derecha
+						contVecinos++;
+					if (matriz[i][j-1]=='*')//izquierda
+						contVecinos++;
+				}
+			}
+
+			//Evalua proximo estado en base a los vecinos vivos y el estado actual
+			proxEstado[i][j] = evaluacion(matriz[i][j], contVecinos);
+			//Setea contador de vecionos
+			contVecinos=0;
+		}
+	}
+
+	//Actualizar matriz actual (cambio de punteros)
+	aux = matriz;
+	matriz = proxEstado;
+	proxEstado = aux;
 }
 
 void main(int argc, char const *argv[])
@@ -26,15 +162,15 @@ void main(int argc, char const *argv[])
 		getchar();
 		exit(-1);
 	}
+	//dimension de la matriz
 	dim = atoi(argv[1]);
-	printf("%i, %i\n", argc,dim);
-	
+	//cantidad de ciclos
+	int ciclos= atoi(argv[2])
 
 	//Inicializa la semilla del random
 	srand((unsigned) time(&t));
 
 	//Se crea la matriz
-	char **matriz;
 	matriz = (char**) malloc(sizeof(char *)*dim);
 	for (int i = 0; i < dim; ++i)
 	 {
@@ -48,10 +184,36 @@ void main(int argc, char const *argv[])
 	 		else
 	 			matriz[i][j] = '-';
 	 	}
-	 } 
+	 }
+	 //Se asigna espacio para la matriz auxiliar
+	 matriz = (char**) malloc(sizeof(char *)*dim);
+	for (int i = 0; i < dim; ++i)
+	 {
+	 	matriz[i] = (char*) malloc(sizeof(char)*dim);
+	 }
 
-	 mostrarMatriz(matriz);
+
+	 //ciclos de vida
+	 printf("Vida del automata:\n\n");
+	 for (int i = 1; i <= ciclos; ++i)
+	 {	
+	 	//Mostrar ciclo y matriz
+	 	printf("Ciclo n°%d: \n\n", i);
+	 	mostrarMatriz(matriz);
+	 	printf("\n\n");
+
+	 	//Calcular proximo estado
+	 	actualizarMatriz();
+	 }
 
 
+
+	 for (int i = 0; i < dim; ++i)
+	 {
+	 	free(matriz[i]);
+	 	free(proxEstado[i]);
+	 }
+	 free(matriz);
+	 free(proxEstado);
 	getchar();
 }
