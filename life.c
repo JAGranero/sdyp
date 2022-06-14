@@ -41,28 +41,27 @@ void actualizarMatriz(){
 	{	
 		for (int j = 0; j < dim; ++j)
 		{
-			switch(i){
-				//Primera fila
-				case 0:
-				switch(j){
-					//Primer columna
-					case 0:
+			//Primera Fila
+			if(i == 0){
+				//Primer columna
+				if(j == 0){
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')
 						contVecinos++;
 					if (matriz[i][j+1]=='*')
 						contVecinos++;
-					break;
-					//Ultima columna
-					case (dim-1):
+				}
+				//Ultima columna
+				else if (i == dim-1)
+				{
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')
 						contVecinos++;
 					if (matriz[i][j-1]=='*')
 						contVecinos++;
-					break;
-					//Columnas internas
-					default:
+				}
+				//Columnas internas
+				else{
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')
 						contVecinos++;
@@ -71,28 +70,28 @@ void actualizarMatriz(){
 					if (matriz[i][j-1]=='*')
 						contVecinos++;
 				}
-				break;
-				//Ultima fila
-				case (dim-1):
-				switch(j){
-					//Primer columna
-					case 0:
+			}
+			//Ultima fila
+			else if (i == dim-1)
+			{
+				//Primer columna
+				if (j == 0){
 					//Contar vecinos vivos
 					if (matriz[i-1][j]=='*')
 						contVecinos++;
 					if (matriz[i][j+1]=='*')
 						contVecinos++;
-					break;
-					//Ultima columna
-					case (dim-1):
+				}	
+				//Ultima columna
+				else if(i == dim-1){
 					//Contar vecinos vivos
 					if (matriz[i-1][j]=='*')
 						contVecinos++;
 					if (matriz[i][j-1]=='*')
 						contVecinos++;
-					break;
-					//Columnas internas
-					default:
+				}
+				//Columnas internas
+				else{
 					//Contar vecinos vivos
 					if (matriz[i][j+1]=='*')
 						contVecinos++;
@@ -101,12 +100,11 @@ void actualizarMatriz(){
 					if (matriz[i][j-1]=='*')
 						contVecinos++;
 				}
-				break;
-				//Filas internas
-				default:
-				switch(j){
-					//Primer columna
-					case 0:
+			}
+			//Filas internas
+			else{
+				//Primer columna
+				if (j == 0){
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')//abajo
 						contVecinos++;
@@ -114,9 +112,9 @@ void actualizarMatriz(){
 						contVecinos++;
 					if (matriz[i][j+1]=='*')//derecha
 						contVecinos++;
-					break;
-					//Ultima columna
-					case (dim-1):
+				}
+				//Ultima columna
+				else if(i == dim-1){
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')// abajo
 						contVecinos++;
@@ -124,9 +122,9 @@ void actualizarMatriz(){
 						contVecinos++;
 					if (matriz[i][j-1]=='*')//izquierda
 						contVecinos++;
-					break;
-					//Columnas internas
-					default:
+				}
+				//Columnas internas
+				else{
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')// abajo
 						contVecinos++;
