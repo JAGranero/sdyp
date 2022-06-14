@@ -17,7 +17,7 @@ void main(int argc, char **argv){
     char *ids;
 
 
-    char saludo[20] = "Soy el proceso";
+    char saludo[20] = "Soy el proceso ";
     char id [4];
     sprintf(id, "%d", mytid); 
     strcat(saludo, id);
