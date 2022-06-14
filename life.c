@@ -3,9 +3,6 @@
 //Dimension de la matriz
 int dim = 0;
 
-char **matriz; 
-char **proxEstado;
-
 //Nuestra la matriz
 int mostrarMatriz(){
 	for (int i = 0; i < dim; ++i)
@@ -153,6 +150,8 @@ void actualizarMatriz(){
 
 void main(int argc, char const *argv[])
 {
+	char **matriz; 
+	char **proxEstado;
 	time_t t;
 
 	//Controlo que se pase como parametro la dimension de la matriz
