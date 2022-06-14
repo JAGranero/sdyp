@@ -12,7 +12,7 @@ void main(int argc, char **argv){
     MPI_Comm_size(MPI_COMM_WORLD, &nproc);
     MPI_Comm_rank(MPI_COMM_WORLD, &mytid);
 
-    char saludo[20] = "Soy el proceso ";
+    char saludo[50] = "  -Soy el proceso ";
     char id [4];
 
             
@@ -28,7 +28,7 @@ void main(int argc, char **argv){
     	//recibe  los mensajes de los demas procesos
     	for (int i = 1; i < nproc; ++i)//inicia desde 1 ya que no contamos el proceso 0
     	{
-    		MPI_Recv(saludo, 20, MPI_CHAR, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
+    		MPI_Recv(saludo, 50, MPI_CHAR, MPI_ANY_SOURCE, 0, MPI_COMM_WORLD, &status);
     		strcat(mensajes," - ");
     		strcat(mensajes,saludo);
     	}
@@ -45,7 +45,7 @@ void main(int argc, char **argv){
 	    //concatenar mensaje e id
 	    strcat(saludo, id);
 	    //envio del mensaje al proceso 0
-	    MPI_Send(saludo, 20, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
+	    MPI_Send(saludo, 50, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
     MPI_Barrier(MPI_COMM_WORLD);
     MPI_Finalize();
