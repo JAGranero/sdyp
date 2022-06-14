@@ -32,6 +32,7 @@ void main(int argc, char **argv){
     		strcat(mensajes," - ");
     		strcat(mensajes,saludo);
     	}
+    	strcat(mensajes,'\0');
     	//Se imprime los mensajes recibidos
     	printf("%s",mensajes);
 
@@ -40,7 +41,7 @@ void main(int argc, char **argv){
     }
     else{
     	//cast de int a string
-	    sprintf(id, "%d", mytid);
+	    sprintf(id, "%d\n", mytid);
 	    //concatenar mensaje e id
 	    strcat(saludo, id);
 	    //envio del mensaje al proceso 0
