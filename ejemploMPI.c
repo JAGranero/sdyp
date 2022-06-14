@@ -13,7 +13,7 @@ void main(int argc, char **argv){
     MPI_Comm_rank(MPI_COMM_WORLD, &mytid);
     
     //Donde se guardaran los mensajes recibidos
-    char *mensaje;
+    char *mensajes;
 
     char saludo[20] = "Soy el proceso";
     char id [4];
