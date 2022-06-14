@@ -11,19 +11,19 @@ void main(int argc, char **argv){
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &nproc);
     MPI_Comm_rank(MPI_COMM_WORLD, &mytid);
-    
-    //Donde se guardaran los mensajes recibidos
-    char *mensajes;
 
     char saludo[20] = "Soy el proceso";
     char id [4];
 
             
     if(mytid == 0){
+	   	//Donde se guardaran los mensajes recibidos
+	    char *mensajes;
+
     	MPI_Status status;
     	// se pide memoria para almacenar todos los mensajes
     	mensajes = (char *) malloc (sizeof (saludo) * nproc);
-    	mensajes[0]="\n";
+    	strcpy(mensajes,"");
     	printf("Soy el proceso 0 y los demas procesos dicen: \n");
     	//recibe  los mensajes de los demas procesos
     	for (int i = 1; i < nproc; ++i)//inicia desde 1 ya que no contamos el proceso 0
