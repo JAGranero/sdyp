@@ -6,7 +6,7 @@ int dim = 0;
 char **matriz, **proxEstado;
 
 //Nuestra la matriz
-int mostrarMatriz(char **matriz){
+int mostrarMatriz(){
 	for (int i = 0; i < dim; ++i)
 	{
 		for (int j = 0; j < dim; ++j)
@@ -197,7 +197,7 @@ void main(int argc, char const *argv[])
 	 {	
 	 	//Mostrar ciclo y matriz
 	 	printf("Ciclo n°%d: \n\n", i);
-	 	mostrarMatriz(matriz);
+	 	mostrarMatriz();
 	 	printf("\n\n");
 
 	 	//Calcular proximo estado
