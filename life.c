@@ -18,6 +18,8 @@ int mostrarMatriz(char **matriz){
 
 void main(int argc, char const *argv[])
 {
+	time_t t;
+
 	//Controlo que se pase como parametro la dimension de la matriz
 	if(argc == 1 ){
 		printf("Falta dimension de la matriz\n");
