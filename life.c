@@ -54,7 +54,7 @@ void actualizarMatriz(){
 						contVecinos++;
 					break;
 					//Ultima columna
-					case dim-1:
+					case (dim-1):
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')
 						contVecinos++;
@@ -84,7 +84,7 @@ void actualizarMatriz(){
 						contVecinos++;
 					break;
 					//Ultima columna
-					case dim-1:
+					case (dim-1):
 					//Contar vecinos vivos
 					if (matriz[i-1][j]=='*')
 						contVecinos++;
@@ -116,7 +116,7 @@ void actualizarMatriz(){
 						contVecinos++;
 					break;
 					//Ultima columna
-					case dim-1:
+					case (dim-1):
 					//Contar vecinos vivos
 					if (matriz[i+1][j]=='*')// abajo
 						contVecinos++;
@@ -165,7 +165,7 @@ void main(int argc, char const *argv[])
 	//dimension de la matriz
 	dim = atoi(argv[1]);
 	//cantidad de ciclos
-	int ciclos= atoi(argv[2])
+	int ciclos= atoi(argv[2]);
 
 	//Inicializa la semilla del random
 	srand((unsigned) time(&t));
@@ -215,5 +215,6 @@ void main(int argc, char const *argv[])
 	 }
 	 free(matriz);
 	 free(proxEstado);
+	 printf("FIN DE LA EJECUCION \n\n");
 	getchar();
 }
