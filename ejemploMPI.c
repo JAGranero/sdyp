@@ -12,7 +12,7 @@ void main(int argc, char **argv){
     MPI_Comm_size(MPI_COMM_WORLD, &nproc);
     MPI_Comm_rank(MPI_COMM_WORLD, &mytid);
 
-    char saludo[20] = "Soy el proceso";
+    char saludo[20] = "Soy el proceso ";
     char id [4];
 
             
