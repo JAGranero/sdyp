@@ -21,6 +21,7 @@ void main(int argc, char **argv){
     char id [4];
     printf("-- %d --\n",mytid);
     sprintf(id, "%d", mytid); 
+    printf("## %s ##\n",id);
     strcat(saludo, id);
 
             
