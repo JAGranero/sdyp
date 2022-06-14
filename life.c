@@ -3,10 +3,11 @@
 //Dimension de la matriz
 int dim = 0;
 
-char **matriz, **proxEstado;
+char **matriz; 
+char **proxEstado;
 
 //Nuestra la matriz
-int mostrarMatriz(char **matriz){
+int mostrarMatriz(){
 	for (int i = 0; i < dim; ++i)
 	{
 		for (int j = 0; j < dim; ++j)
@@ -192,7 +193,7 @@ void main(int argc, char const *argv[])
 
 
 	 //ciclos de vida
-	 printf("Vida del automata:\n\n");
+	 /*printf("Vida del automata:\n\n");
 	 for (int i = 1; i <= ciclos; ++i)
 	 {	
 	 	//Mostrar ciclo y matriz
@@ -202,7 +203,8 @@ void main(int argc, char const *argv[])
 
 	 	//Calcular proximo estado
 	 	actualizarMatriz();
-	 }
+	 }*/
+	 mostrarMatriz();
 
 
 
