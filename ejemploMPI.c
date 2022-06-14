@@ -47,6 +47,6 @@ void main(int argc, char **argv){
 	    //envio del mensaje al proceso 0
 	    MPI_Send(saludo, 20, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
     }
-    
+    MPI_Barrier();
     MPI_Finalize();
 }
