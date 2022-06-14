@@ -42,9 +42,9 @@ void main(int argc, char const *argv[])
 	 	for (int j = 0; j < dim; ++j)
 	 	{
 	 		if(rand()%100 < 30)
-	 			matriz[i][j] = "*";
+	 			matriz[i][j] = '*';
 	 		else
-	 			matriz[i][j] = "-";
+	 			matriz[i][j] = '-';
 	 	}
 	 } 
 
