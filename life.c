@@ -201,7 +201,7 @@ void main(int argc, char const *argv[])
 	 	printf("\n\n");
 
 	 	//Calcular proximo estado
-	 	actualizarMatriz();
+	 	//actualizarMatriz();
 	 }
 
 
