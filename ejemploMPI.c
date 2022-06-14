@@ -22,10 +22,11 @@ void main(int argc, char **argv){
 
             
     if(mytid == 0){
+    	MPI_Status status;
     	// se pide memoria para almacenar todos los mensajes
     	mensajes = (char *) malloc (sizeof (saludo) * nproc);
     	mensajes[0]="\n";
-    	printf("Soy el proceso 0 y los demas procesos dicen: \n", );
+    	printf("Soy el proceso 0 y los demas procesos dicen: \n");
     	//recibe  los mensajes de los demas procesos
     	for (int i = 1; i < nproc; ++i)//inicia desde 1 ya que no contamos el proceso 0
     	{
