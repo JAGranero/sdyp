@@ -17,8 +17,6 @@ void main(int argc, char **argv){
 
     char saludo[20] = "Soy el proceso";
     char id [4];
-    sprintf(id, "%d\n", mytid); 
-    strcat(saludo, id);
 
             
     if(mytid == 0){
@@ -42,7 +40,7 @@ void main(int argc, char **argv){
     }
     else{
     	//cast de int a string
-	    sprintf(id, "%d\n", mytid);
+	    sprintf(id, "%d", mytid);
 	    //concatenar mensaje e id
 	    strcat(saludo, id);
 	    //envio del mensaje al proceso 0
