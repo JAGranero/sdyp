@@ -19,9 +19,9 @@ void main(int argc, char **argv){
 
     char saludo[20] = "Soy el proceso ";
     char id [4];
-    printf("-- %d --\n",mytid);
+    //printf("-- %d --\n",mytid);
     sprintf(id, "%d", mytid); 
-    printf("## %s ##\n",id);
+    //printf("## %s ##\n",id);
     strcat(saludo, id);
 
             
@@ -35,8 +35,8 @@ void main(int argc, char **argv){
         int tam = 0;
         printf("Procesos dicen:\n");
         for(int i=0;i < nproc; i++){
-            printf("    -%s\n", ids);
-            tam =+ strlen(ids + tam);
+            printf("    -%s\n", (ids + tam));
+            tam = tam + strlen(ids + tam);
         }
         free (ids);
     }
