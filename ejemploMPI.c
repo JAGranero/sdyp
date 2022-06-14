@@ -32,7 +32,7 @@ void main(int argc, char **argv){
     		strcat(mensajes," - ");
     		strcat(mensajes,saludo);
     	}
-    	strcat(mensajes,'\0');
+    	strcat(mensajes,"\0");
     	//Se imprime los mensajes recibidos
     	printf("%s",mensajes);
 
